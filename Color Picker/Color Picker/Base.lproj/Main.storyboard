@@ -22,7 +22,7 @@
                                 <rect key="frame" x="16" y="113" width="270" height="387"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="c2g-gW-uEx">
-                                        <rect key="frame" x="125" y="174.5" width="20" height="37"/>
+                                        <rect key="frame" x="125" y="175" width="20" height="37"/>
                                         <color key="color" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </activityIndicatorView>
                                 </subviews>

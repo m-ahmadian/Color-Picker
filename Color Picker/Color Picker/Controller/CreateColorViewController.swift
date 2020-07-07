@@ -20,7 +20,26 @@ class CreateColorViewController: UIViewController {
     
     
     // MARK: Properties
-  
+    var startLocation: CGFloat = 0.0
+    var dragOffset: CGSize = .zero
+    
+    var chosenColor: UIColor?
+    
+    var currentColor: UIColor? {
+        return UIColor.init(hue: CGFloat(1.0 - (normalizeGesture() / self.hueView.bounds.height)), saturation: 1.0, brightness: 1.0, alpha: 1.0)
+    }
+    
+    func normalizeGesture() -> CGFloat {
+        let offset: CGFloat = startLocation + dragOffset.height
+        let maxY: CGFloat = max(0.0, offset)
+        let minY: CGFloat = min(maxY, self.hueView.bounds.height)
+        
+        return minY
+    }
+
+    
+    
+    
     var hueColors: [CGColor] = {
         var colorArray: [UIColor] = []
         
@@ -71,13 +90,23 @@ class CreateColorViewController: UIViewController {
         let gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
         self.activityIndicator.addGestureRecognizer(gestureRecognizer)
         gestureRecognizer.delegate = self
+        
+        
+        let dragGesture = UIPanGestureRecognizer(target: self, action: #selector(handleDrag(_:)))
+        self.hueView.addGestureRecognizer(dragGesture)
+        dragGesture.delegate = self
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        self.hueView.addGestureRecognizer(tapGesture)
+        tapGesture.delegate = self
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         createHueGradientView()
-        createSaturationBrightnessView()
+        createSaturationBrightnessView(redSaturations)
     }
     
     
@@ -93,17 +122,16 @@ class CreateColorViewController: UIViewController {
     }
     
     
-    func createSaturationBrightnessView() {
+    func createSaturationBrightnessView(_ colors: [CGColor]) {
         
         let whiteLayer = CALayer()
         whiteLayer.backgroundColor = UIColor.white.cgColor
         
         let gradientSaturation = CAGradientLayer()
         gradientSaturation.frame = self.saturationBrightnessView.bounds
-        gradientSaturation.colors = redSaturations
+        gradientSaturation.colors = colors
         gradientSaturation.startPoint = CGPoint(x: 0.0, y: 0.5)
         gradientSaturation.endPoint = CGPoint(x: 1.0, y: 0.5)
-//        gradientSaturation.opacity = 0.5
         
         let gradientBrightness = CAGradientLayer()
         gradientBrightness.frame = self.saturationBrightnessView.bounds
@@ -114,6 +142,22 @@ class CreateColorViewController: UIViewController {
         self.saturationBrightnessView.layer.addSublayer(whiteLayer)
         whiteLayer.addSublayer(gradientSaturation)
         gradientSaturation.addSublayer(gradientBrightness)
+        
+        self.saturationBrightnessView.reloadInputViews()
+    }
+    
+    
+    func makeColorForView() {
+        var colorArray: [UIColor] = []
+        
+        for i in stride(from: 0.0 as CGFloat, to: 359.0 as CGFloat, by: 1.0) {
+            let ourColor = UIColor(hue: CGFloat(1.0 - (normalizeGesture() / self.hueView.bounds.height)), saturation: CGFloat(i) / 359.0, brightness: 1.0, alpha: 1.0)
+            colorArray.append(ourColor)
+        }
+        let theColors: [CGColor] = colorArray.map({
+            $0.cgColor
+        })
+        createSaturationBrightnessView(theColors)
     }
 
 }
@@ -146,6 +190,41 @@ extension CreateColorViewController: UIGestureRecognizerDelegate {
             
         }
         
+    }
+    
+    
+    @objc func handleDrag(_ gestureRecognizer: UIPanGestureRecognizer) {
+        guard gestureRecognizer.view != nil else {
+            return
+        }
+        if gestureRecognizer.state == .began {
+            self.startLocation = gestureRecognizer.location(in: gestureRecognizer.view).y
+        }
+        
+        if gestureRecognizer.state == .changed {
+            let translation = gestureRecognizer.translation(in: gestureRecognizer.view)
+            self.dragOffset = CGSize(width: translation.x, height: translation.y)
+        }
+        
+        if gestureRecognizer.state == .cancelled {
+            self.startLocation = 0.0
+            self.dragOffset = .zero
+            gestureRecognizer.setTranslation(CGPoint.zero, in: gestureRecognizer.view)
+        }
+
+        makeColorForView()
+    }
+    
+    
+    
+    
+    @objc func handleTap(_ gestureRecognizer: UITapGestureRecognizer) {
+        guard gestureRecognizer.view != nil else {
+            return
+        }
+
+        self.startLocation = gestureRecognizer.location(in: gestureRecognizer.view).y
+        makeColorForView()
     }
     
 }
