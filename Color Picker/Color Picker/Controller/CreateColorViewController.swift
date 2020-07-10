@@ -235,18 +235,11 @@ extension CreateColorViewController: UIGestureRecognizerDelegate {
             }
         }
         
-        if gestureRecognizer.state == .changed {
-            let translation = gestureRecognizer.translation(in: gestureRecognizer.view)
-            self.dragOffset = CGSize(width: translation.x, height: translation.y)
-        }
-        
-        if gestureRecognizer.state == .cancelled {
+        else if gestureRecognizer.state == .cancelled {
             self.startLocation = 0.0
             self.dragOffset = .zero
-            gestureRecognizer.setTranslation(CGPoint.zero, in: gestureRecognizer.view)
+            gestureRecognizer.setTranslation(CGPoint.zero, in: gestureRecognizer.view?.superview)
         }
-
-        makeColorForView()
     }
     
     
@@ -256,9 +249,23 @@ extension CreateColorViewController: UIGestureRecognizerDelegate {
         guard gestureRecognizer.view != nil else {
             return
         }
-
-        self.startLocation = gestureRecognizer.location(in: gestureRecognizer.view).y
-        makeColorForView()
+        
+        if gestureRecognizer.state == .ended {
+            gestureRecognizer.numberOfTapsRequired = 1
+            let point = gestureRecognizer.location(in: gestureRecognizer.view)
+            startLocation = point.y
+            
+            let superbounds = CGRect(x: hueView.bounds.origin.x, y: hueView.bounds.origin.y, width: hueView.bounds.size.width, height: hueView.bounds.size.height)
+            
+            if (superbounds.contains(point)) {
+                circleView.center = CGPoint(x: circleView.center.x, y: point.y)
+                
+                circleView.backgroundColor = currentColor
+                makeColorForView()
+            }
+        }
+        
     }
+    
     
 }
