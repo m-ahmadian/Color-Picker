@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E81946E324A9225C00D48F93 /* ColorSwatchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81946E224A9225C00D48F93 /* ColorSwatchesViewController.swift */; };
 		E84B1A8024A25CC9001081CF /* ColorCodesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84B1A7F24A25CC9001081CF /* ColorCodesViewController.swift */; };
+		E850DCB324B4C4780074EF92 /* CreateColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E850DCB224B4C4780074EF92 /* CreateColorViewController.swift */; };
 		E8789FD924A02FA200573D7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8789FD824A02FA200573D7A /* AppDelegate.swift */; };
 		E8789FDB24A02FA200573D7A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8789FDA24A02FA200573D7A /* ViewController.swift */; };
 		E8789FDE24A02FA200573D7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8789FDC24A02FA200573D7A /* Main.storyboard */; };
@@ -16,12 +17,12 @@
 		E8789FE324A02FA400573D7A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8789FE124A02FA400573D7A /* LaunchScreen.storyboard */; };
 		E8BBC5E024A7007C00A1F7AE /* ColorWheel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BBC5DF24A7007C00A1F7AE /* ColorWheel.swift */; };
 		E8D3FFEF24AD742700DFD663 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D3FFEE24AD742700DFD663 /* Colors.swift */; };
-		E8D6191824A59ACE002B5CD9 /* CreateColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6191724A59ACE002B5CD9 /* CreateColorViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E81946E224A9225C00D48F93 /* ColorSwatchesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSwatchesViewController.swift; sourceTree = "<group>"; };
 		E84B1A7F24A25CC9001081CF /* ColorCodesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCodesViewController.swift; sourceTree = "<group>"; };
+		E850DCB224B4C4780074EF92 /* CreateColorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateColorViewController.swift; sourceTree = "<group>"; };
 		E8789FD524A02FA200573D7A /* Color Picker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Color Picker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8789FD824A02FA200573D7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8789FDA24A02FA200573D7A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -31,7 +32,6 @@
 		E8789FE424A02FA400573D7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8BBC5DF24A7007C00A1F7AE /* ColorWheel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorWheel.swift; sourceTree = "<group>"; };
 		E8D3FFEE24AD742700DFD663 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		E8D6191724A59ACE002B5CD9 /* CreateColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateColorViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,8 +48,8 @@
 		E84B1A7E24A25C8C001081CF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E850DCB224B4C4780074EF92 /* CreateColorViewController.swift */,
 				E84B1A7F24A25CC9001081CF /* ColorCodesViewController.swift */,
-				E8D6191724A59ACE002B5CD9 /* CreateColorViewController.swift */,
 				E81946E224A9225C00D48F93 /* ColorSwatchesViewController.swift */,
 			);
 			path = Controller;
@@ -174,8 +174,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E8D6191824A59ACE002B5CD9 /* CreateColorViewController.swift in Sources */,
 				E8789FDB24A02FA200573D7A /* ViewController.swift in Sources */,
+				E850DCB324B4C4780074EF92 /* CreateColorViewController.swift in Sources */,
 				E84B1A8024A25CC9001081CF /* ColorCodesViewController.swift in Sources */,
 				E8D3FFEF24AD742700DFD663 /* Colors.swift in Sources */,
 				E8789FD924A02FA200573D7A /* AppDelegate.swift in Sources */,

@@ -17,6 +17,7 @@ class CreateColorViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var hueView: UIView!
     @IBOutlet weak var saturationBrightnessView: UIView!
+    @IBOutlet weak var circleView: UIView!
     
     
     // MARK: Properties
@@ -93,20 +94,35 @@ class CreateColorViewController: UIViewController {
         
         
         let dragGesture = UIPanGestureRecognizer(target: self, action: #selector(handleDrag(_:)))
-        self.hueView.addGestureRecognizer(dragGesture)
+//        self.hueView.addGestureRecognizer(dragGesture)
+        circleView.addGestureRecognizer(dragGesture)
         dragGesture.delegate = self
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         self.hueView.addGestureRecognizer(tapGesture)
         tapGesture.delegate = self
         
+        
+        // Circle View
+        circleView.layer.cornerRadius = circleView.frame.size.width / 2
+        circleView.clipsToBounds = true
+        hueView.addSubview(circleView)
+        circleView.center.y = hueView.frame.size.height
+        
+//        circleView.frame.size.width = hueView.frame.size.width
+        circleView.layer.borderWidth = 1.0
+        circleView.layer.borderColor = UIColor.black.cgColor
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         createHueGradientView()
         createSaturationBrightnessView(redSaturations)
+        circleView.superview?.bringSubviewToFront(circleView)
+        activityIndicator.superview?.bringSubviewToFront(activityIndicator)
+//        circleView.frame.size.width = hueView.frame.size.width
     }
     
     
@@ -143,6 +159,7 @@ class CreateColorViewController: UIViewController {
         whiteLayer.addSublayer(gradientSaturation)
         gradientSaturation.addSublayer(gradientBrightness)
         
+        activityIndicator.superview?.bringSubviewToFront(activityIndicator)
         self.saturationBrightnessView.reloadInputViews()
     }
     
@@ -197,8 +214,25 @@ extension CreateColorViewController: UIGestureRecognizerDelegate {
         guard gestureRecognizer.view != nil else {
             return
         }
-        if gestureRecognizer.state == .began {
-            self.startLocation = gestureRecognizer.location(in: gestureRecognizer.view).y
+        
+        if gestureRecognizer.state == .began || gestureRecognizer.state == .changed {
+            
+            let point = gestureRecognizer.location(in: gestureRecognizer.view?.superview)
+            startLocation = point.y
+            
+            let superBounds = CGRect(x: hueView.bounds.origin.x, y: hueView.bounds.origin.y, width: hueView.bounds.size.width, height: hueView.bounds.size.height)
+            
+            if (superBounds.contains(point)) {
+                let translation = gestureRecognizer.translation(in: gestureRecognizer.view?.superview)
+                dragOffset = CGSize(width: translation.x, height: translation.y)
+                
+                gestureRecognizer.view!.center = CGPoint(x: gestureRecognizer.view!.center.x, y: gestureRecognizer.view!.center.y + translation.y)
+                
+                circleView.backgroundColor = currentColor
+                makeColorForView()
+                
+                gestureRecognizer.setTranslation(CGPoint.zero, in: gestureRecognizer.view?.superview)
+            }
         }
         
         if gestureRecognizer.state == .changed {
