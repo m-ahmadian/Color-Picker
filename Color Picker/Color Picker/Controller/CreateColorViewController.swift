@@ -106,12 +106,16 @@ class CreateColorViewController: UIViewController {
         // Circle View
         circleView.layer.cornerRadius = circleView.frame.size.width / 2
         circleView.clipsToBounds = true
-        hueView.addSubview(circleView)
-        circleView.center.y = hueView.frame.size.height
-        
-//        circleView.frame.size.width = hueView.frame.size.width
+
         circleView.layer.borderWidth = 1.0
         circleView.layer.borderColor = UIColor.black.cgColor
+        circleView.backgroundColor = currentColor
+        circleView.center = CGPoint(x: hueView.bounds.origin.x + hueView.frame.size.width / 2, y: hueView.bounds.origin.y + hueView.frame.size.height + hueView.frame.size.height / 2 /*+ circleView.frame.size.height / 2*/)
+        
+        hueView.addSubview(circleView)
+        
+        activityIndicator.center = saturationBrightnessView.center
+        saturationBrightnessView.addSubview(activityIndicator)
     }
     
     
@@ -122,7 +126,8 @@ class CreateColorViewController: UIViewController {
         createSaturationBrightnessView(redSaturations)
         circleView.superview?.bringSubviewToFront(circleView)
         activityIndicator.superview?.bringSubviewToFront(activityIndicator)
-//        circleView.frame.size.width = hueView.frame.size.width
+        
+        makeColorForView()
     }
     
     

@@ -21,35 +21,24 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YIy-SQ-X8d">
                                 <rect key="frame" x="16" y="113" width="270" height="387"/>
                                 <subviews>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="c2g-gW-uEx">
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="c2g-gW-uEx">
                                         <rect key="frame" x="125" y="174.5" width="20" height="37"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="color" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="c2g-gW-uEx" firstAttribute="centerY" secondItem="YIy-SQ-X8d" secondAttribute="centerY" constant="-0.5" id="M64-t9-s7h"/>
-                                    <constraint firstAttribute="trailing" secondItem="c2g-gW-uEx" secondAttribute="trailing" constant="125" id="NAa-GO-caf"/>
-                                    <constraint firstItem="c2g-gW-uEx" firstAttribute="centerX" secondItem="YIy-SQ-X8d" secondAttribute="centerX" id="jKw-4K-7vg"/>
-                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eh3-UQ-Wh0">
                                 <rect key="frame" x="310" y="113" width="41" height="387"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tXb-Dq-8Tm">
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tXb-Dq-8Tm">
                                         <rect key="frame" x="3" y="352" width="35" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="35" id="PYp-ys-sJ1"/>
-                                            <constraint firstAttribute="height" constant="35" id="zO2-Qd-Xa9"/>
-                                        </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="tXb-Dq-8Tm" secondAttribute="bottom" id="1Th-bN-Yn3"/>
-                                    <constraint firstItem="tXb-Dq-8Tm" firstAttribute="centerX" secondItem="Eh3-UQ-Wh0" secondAttribute="centerX" id="B43-nR-HJg"/>
-                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.92549019610000005" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
