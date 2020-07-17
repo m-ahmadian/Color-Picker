@@ -111,24 +111,31 @@ class CreateColorViewController: UIViewController {
         circleView.layer.borderWidth = 1.0
         circleView.layer.borderColor = UIColor.black.cgColor
         circleView.backgroundColor = currentColor
-        circleView.center = CGPoint(x: hueView.bounds.origin.x + hueView.frame.size.width / 2, y: hueView.bounds.origin.y + hueView.frame.size.height + hueView.frame.size.height / 2 /*+ circleView.frame.size.height / 2*/)
         
         hueView.addSubview(circleView)
-        
-        activityIndicator.center = saturationBrightnessView.center
+
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        createHueGradientView()
+        createSaturationBrightnessView(redSaturations)
+        circleView.superview?.bringSubviewToFront(circleView)
+
         saturationBrightnessView.addSubview(activityIndicator)
+        activityIndicator.superview?.bringSubviewToFront(activityIndicator)
+        
+        makeColorForView()
+        
+        saturationBrightnessView.addSubview(activityIndicator)
+        activityIndicator.center = CGPoint(x: saturationBrightnessView.bounds.origin.x + saturationBrightnessView.bounds.size.width / 2, y: saturationBrightnessView.bounds.origin.y + saturationBrightnessView.bounds.size.height / 2)
+        
+        circleView.center = CGPoint(x: hueView.bounds.origin.x + hueView.frame.size.width / 2, y: hueView.bounds.origin.y + hueView.bounds.size.height - circleView.frame.size.height / 2)
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        createHueGradientView()
-        createSaturationBrightnessView(redSaturations)
-        circleView.superview?.bringSubviewToFront(circleView)
-        activityIndicator.superview?.bringSubviewToFront(activityIndicator)
-        
-        makeColorForView()
     }
     
     
