@@ -18,6 +18,7 @@ class CreateColorViewController: UIViewController {
     @IBOutlet weak var hueView: UIView!
     @IBOutlet weak var saturationBrightnessView: UIView!
     @IBOutlet weak var circleView: UIView!
+    @IBOutlet weak var selectedColorView: UIView!
     
     
     // MARK: Properties
@@ -181,6 +182,16 @@ class CreateColorViewController: UIViewController {
         })
         createSaturationBrightnessView(theColors)
     }
+    
+    
+    func createImageFromSaturationBrightnessView() -> UIImage {
+        UIGraphicsBeginImageContext(saturationBrightnessView.bounds.size)
+        saturationBrightnessView.drawHierarchy(in: saturationBrightnessView.bounds, afterScreenUpdates: true)
+        saturationBrightnessView.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return image
+    }
 
 }
 
@@ -204,6 +215,10 @@ extension CreateColorViewController: UIGestureRecognizerDelegate {
                     let translation = gestureRecognizer.translation(in: gestureRecognizer.view!.superview)
                     
                     gestureRecognizer.view!.center = CGPoint(x: gestureRecognizer.view!.center.x + translation.x, y: gestureRecognizer.view!.center.y + translation.y)
+                    
+                    let image = createImageFromSaturationBrightnessView()
+                    
+                    selectedColorView.backgroundColor = image.cgImage?.color(at: point)
                     
                     gestureRecognizer.setTranslation(CGPoint.zero, in: gestureRecognizer.view!.superview)
                 }
@@ -273,4 +288,39 @@ extension CreateColorViewController: UIGestureRecognizerDelegate {
     }
     
     
+}
+
+
+
+
+public extension CGImage {
+    
+    func color(at pixel: CGPoint) -> UIColor? {
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+        let bytesPerPixel = 4
+        let bitsPerComponent = 8
+        let bytesPerRow = width * bytesPerPixel
+        let bitmapInfo: UInt32 = CGImageAlphaInfo.premultipliedLast.rawValue | CGBitmapInfo.byteOrder32Big.rawValue
+        
+        let x = pixel.x
+        let y = pixel.y
+        
+        guard let context = CGContext(data: nil, width: width, height: height, bitsPerComponent: bitsPerComponent, bytesPerRow: bytesPerRow, space: colorSpace, bitmapInfo: bitmapInfo), let ptr = context.data?.assumingMemoryBound(to: UInt8.self) else {
+            return nil
+        }
+        
+        context.draw(self, in: CGRect(x: 0, y: 0, width: width, height: height))
+        
+        
+        let pixelInfo = bytesPerRow * Int(y) + bytesPerPixel * Int(x)
+        
+//        let i = bytesPerRow * Int(at.y) + bytesPerPixel * Int(at.x)
+        
+        let red = CGFloat(ptr[pixelInfo]) / 255.0
+        let green = CGFloat(ptr[(pixelInfo + 1)]) / 255.0
+        let blue = CGFloat(ptr[(pixelInfo + 2)]) / 255.0
+        let alpha = CGFloat(ptr[pixelInfo + 3]) / 255.0
+        
+        return UIColor(red: red, green: green, blue: blue, alpha: alpha)
+    }
 }

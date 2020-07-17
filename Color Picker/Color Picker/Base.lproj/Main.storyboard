@@ -40,17 +40,27 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pev-H1-kS7">
+                                <rect key="frame" x="87.5" y="515" width="200" height="94"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="94" id="XWy-2u-05d"/>
+                                    <constraint firstAttribute="width" constant="200" id="abo-9r-MUh"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.92549019610000005" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Lj7-K6-3ZZ" firstAttribute="trailing" secondItem="Eh3-UQ-Wh0" secondAttribute="trailing" constant="24" id="2JC-UX-rcT"/>
                             <constraint firstItem="Eh3-UQ-Wh0" firstAttribute="leading" secondItem="YIy-SQ-X8d" secondAttribute="trailing" constant="24" id="4E4-rM-gHc"/>
                             <constraint firstItem="YIy-SQ-X8d" firstAttribute="top" secondItem="Lj7-K6-3ZZ" secondAttribute="top" constant="49" id="6SF-Zb-JRl"/>
+                            <constraint firstItem="Pev-H1-kS7" firstAttribute="centerX" secondItem="Lj7-K6-3ZZ" secondAttribute="centerX" id="M3i-dO-6gZ"/>
                             <constraint firstItem="Eh3-UQ-Wh0" firstAttribute="top" secondItem="Lj7-K6-3ZZ" secondAttribute="top" constant="49" id="MQq-sR-YcV"/>
                             <constraint firstItem="Lj7-K6-3ZZ" firstAttribute="trailing" secondItem="YIy-SQ-X8d" secondAttribute="trailing" constant="89" id="Nb3-vy-1ao"/>
                             <constraint firstItem="YIy-SQ-X8d" firstAttribute="centerY" secondItem="Lj7-K6-3ZZ" secondAttribute="centerY" constant="-34.5" id="Qfb-ss-h72"/>
                             <constraint firstItem="YIy-SQ-X8d" firstAttribute="centerX" secondItem="Lj7-K6-3ZZ" secondAttribute="centerX" constant="-36.5" id="Utw-PE-jTJ"/>
                             <constraint firstItem="Eh3-UQ-Wh0" firstAttribute="bottom" secondItem="YIy-SQ-X8d" secondAttribute="bottom" id="XjN-T6-phz"/>
+                            <constraint firstItem="Pev-H1-kS7" firstAttribute="top" secondItem="YIy-SQ-X8d" secondAttribute="bottom" constant="15" id="vbP-4c-453"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Lj7-K6-3ZZ"/>
                     </view>
@@ -60,6 +70,7 @@
                         <outlet property="circleView" destination="tXb-Dq-8Tm" id="ikJ-ji-t7w"/>
                         <outlet property="hueView" destination="Eh3-UQ-Wh0" id="bCX-l0-yd1"/>
                         <outlet property="saturationBrightnessView" destination="YIy-SQ-X8d" id="EfG-CL-ei3"/>
+                        <outlet property="selectedColorView" destination="Pev-H1-kS7" id="15o-vb-4LM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pbh-y7-t13" userLabel="First Responder" sceneMemberID="firstResponder"/>
