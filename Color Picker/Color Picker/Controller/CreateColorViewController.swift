@@ -19,6 +19,11 @@ class CreateColorViewController: UIViewController {
     @IBOutlet weak var saturationBrightnessView: UIView!
     @IBOutlet weak var circleView: UIView!
     @IBOutlet weak var selectedColorView: UIView!
+    @IBOutlet weak var hexValueLabel: UILabel!
+    @IBOutlet weak var RGBValueLabel: UILabel!
+    @IBOutlet weak var circleViewY: NSLayoutConstraint!
+    @IBOutlet weak var activityIndicatorX: NSLayoutConstraint!
+    @IBOutlet weak var activityIndicatorY: NSLayoutConstraint!
     
     
     // MARK: Properties
@@ -199,6 +204,25 @@ class CreateColorViewController: UIViewController {
         UIGraphicsEndImageContext()
         return image
     }
+    
+    
+    func displaydColorInfo(color: UIColor?) {
+
+        if let color = color {
+            let redValue = Int(color.redValue >= 1.0 ? 255: color.redValue * 256.0)
+
+            let greenValue = Int(color.greenValue >= 1.0 ? 255: color.greenValue * 256.0)
+
+            let blueValue = Int(color.blueValue >= 1.0 ? 255: color.blueValue * 256.0)
+
+            let hexValue = String(format: "%02X", Int(redValue)) + String(format: "%02X", Int(greenValue)) + String(format: "%02X", blueValue)
+            hexValueLabel.text = "#\(hexValue)"
+            RGBValueLabel.text = "\(redValue)  \(greenValue)  \(blueValue)"
+        } else {
+            hexValueLabel.text = "#FFFFFF"
+            RGBValueLabel.text = "00  00  00"
+        }
+    }
 
 }
 
@@ -221,11 +245,19 @@ extension CreateColorViewController: UIGestureRecognizerDelegate {
                 if (superBounds.contains(point)) {
                     let translation = gestureRecognizer.translation(in: gestureRecognizer.view!.superview)
                     
+                    activityIndicatorX.constant = point.x - (activityIndicator.frame.size.width / 2)
+                    
+                    activityIndicatorY.constant = saturationBrightnessView.bounds.size.height - (point.y + (activityIndicator.frame.size.height / 2))
+                    
                     gestureRecognizer.view!.center = CGPoint(x: gestureRecognizer.view!.center.x + translation.x, y: gestureRecognizer.view!.center.y + translation.y)
                     
                     let image = createImageFromSaturationBrightnessView()
                     
-                    selectedColorView.backgroundColor = image.cgImage?.color(at: point)
+                    
+                    let selectedColor = image.cgImage?.color(at: point)
+                    selectedColorView.backgroundColor = selectedColor
+
+                    self.displaydColorInfo(color: selectedColor)
                     
                     gestureRecognizer.setTranslation(CGPoint.zero, in: gestureRecognizer.view!.superview)
                 }
@@ -252,6 +284,8 @@ extension CreateColorViewController: UIGestureRecognizerDelegate {
             if (superBounds.contains(point)) {
                 let translation = gestureRecognizer.translation(in: gestureRecognizer.view?.superview)
                 dragOffset = CGSize(width: translation.x, height: translation.y)
+                
+                circleViewY.constant -= translation.y
                 
                 gestureRecognizer.view!.center = CGPoint(x: gestureRecognizer.view!.center.x, y: gestureRecognizer.view!.center.y + translation.y)
                 
@@ -285,6 +319,8 @@ extension CreateColorViewController: UIGestureRecognizerDelegate {
             let superbounds = CGRect(x: hueView.bounds.origin.x, y: hueView.bounds.origin.y, width: hueView.bounds.size.width, height: hueView.bounds.size.height)
             
             if (superbounds.contains(point)) {
+                circleViewY.constant = hueView.bounds.size.height - (point.y + (circleView.frame.size.height / 2))
+                
                 circleView.center = CGPoint(x: circleView.center.x, y: point.y)
                 
                 circleView.backgroundColor = currentColor

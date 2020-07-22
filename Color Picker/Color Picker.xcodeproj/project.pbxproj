@@ -16,7 +16,7 @@
 		E8789FE324A02FA400573D7A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8789FE124A02FA400573D7A /* LaunchScreen.storyboard */; };
 		E8BBC5E024A7007C00A1F7AE /* ColorWheel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BBC5DF24A7007C00A1F7AE /* ColorWheel.swift */; };
 		E8D3FFEF24AD742700DFD663 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D3FFEE24AD742700DFD663 /* Colors.swift */; };
-		E8F0E52624C243E200D13AE5 /* CreateColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F0E52524C243E200D13AE5 /* CreateColorViewController.swift */; };
+		E8F0E52424C20B9900D13AE5 /* CreateColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F0E52324C20B9900D13AE5 /* CreateColorViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +31,7 @@
 		E8789FE424A02FA400573D7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8BBC5DF24A7007C00A1F7AE /* ColorWheel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorWheel.swift; sourceTree = "<group>"; };
 		E8D3FFEE24AD742700DFD663 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		E8F0E52524C243E200D13AE5 /* CreateColorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateColorViewController.swift; sourceTree = "<group>"; };
+		E8F0E52324C20B9900D13AE5 /* CreateColorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateColorViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,7 +48,7 @@
 		E84B1A7E24A25C8C001081CF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				E8F0E52524C243E200D13AE5 /* CreateColorViewController.swift */,
+				E8F0E52324C20B9900D13AE5 /* CreateColorViewController.swift */,
 				E84B1A7F24A25CC9001081CF /* ColorCodesViewController.swift */,
 				E81946E224A9225C00D48F93 /* ColorSwatchesViewController.swift */,
 			);
@@ -175,7 +175,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8789FDB24A02FA200573D7A /* ViewController.swift in Sources */,
-				E8F0E52624C243E200D13AE5 /* CreateColorViewController.swift in Sources */,
+				E8F0E52424C20B9900D13AE5 /* CreateColorViewController.swift in Sources */,
 				E84B1A8024A25CC9001081CF /* ColorCodesViewController.swift in Sources */,
 				E8D3FFEF24AD742700DFD663 /* Colors.swift in Sources */,
 				E8789FD924A02FA200573D7A /* AppDelegate.swift in Sources */,
