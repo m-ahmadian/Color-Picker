@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E81946E324A9225C00D48F93 /* ColorSwatchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81946E224A9225C00D48F93 /* ColorSwatchesViewController.swift */; };
 		E84B1A8024A25CC9001081CF /* ColorCodesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84B1A7F24A25CC9001081CF /* ColorCodesViewController.swift */; };
+		E858E59224CD3124006D9989 /* FindColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E858E59124CD3124006D9989 /* FindColorViewController.swift */; };
 		E8789FD924A02FA200573D7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8789FD824A02FA200573D7A /* AppDelegate.swift */; };
 		E8789FDB24A02FA200573D7A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8789FDA24A02FA200573D7A /* ViewController.swift */; };
 		E8789FDE24A02FA200573D7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8789FDC24A02FA200573D7A /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		E81946E224A9225C00D48F93 /* ColorSwatchesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSwatchesViewController.swift; sourceTree = "<group>"; };
 		E84B1A7F24A25CC9001081CF /* ColorCodesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCodesViewController.swift; sourceTree = "<group>"; };
+		E858E59124CD3124006D9989 /* FindColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindColorViewController.swift; sourceTree = "<group>"; };
 		E8789FD524A02FA200573D7A /* Color Picker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Color Picker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8789FD824A02FA200573D7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8789FDA24A02FA200573D7A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -51,6 +53,7 @@
 				E8F0E52324C20B9900D13AE5 /* CreateColorViewController.swift */,
 				E84B1A7F24A25CC9001081CF /* ColorCodesViewController.swift */,
 				E81946E224A9225C00D48F93 /* ColorSwatchesViewController.swift */,
+				E858E59124CD3124006D9989 /* FindColorViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -181,6 +184,7 @@
 				E8789FD924A02FA200573D7A /* AppDelegate.swift in Sources */,
 				E81946E324A9225C00D48F93 /* ColorSwatchesViewController.swift in Sources */,
 				E8BBC5E024A7007C00A1F7AE /* ColorWheel.swift in Sources */,
+				E858E59224CD3124006D9989 /* FindColorViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
